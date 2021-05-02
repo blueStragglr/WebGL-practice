@@ -16,7 +16,7 @@ interface WebGLBufferPosition {
 }
 
 
-export const renderTriangle = (id: string) => {
+export const renderTriangle = (id: string, shaderPositions: number[]) => {
   const canvas: HTMLCanvasElement | null = document.querySelector(`#${id}`);
 
   if (canvas === null) {
@@ -75,7 +75,7 @@ export const renderTriangle = (id: string) => {
 
   // Here's where we call the routine that builds all the
   // objects we'll be drawing.
-  const buffers = initBuffers(gl);
+  const buffers = initBuffers(gl, shaderPositions);
 
   // Draw the scene
   drawScene(gl, programInfo, buffers);
@@ -87,7 +87,7 @@ export const renderTriangle = (id: string) => {
 // Initialize the buffers we'll need. For this demo, we just
 // have one object -- a simple two-dimensional square.
 //
-function initBuffers(gl: WebGLRenderingContext) {
+function initBuffers(gl: WebGLRenderingContext, positions: number[]) {
 
   // Create a buffer for the square's positions.
 
@@ -99,14 +99,6 @@ function initBuffers(gl: WebGLRenderingContext) {
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
   // Now create an array of positions for the square.
-
-  const positions = [
-    1.0,  1.0,
-    -1.0,  1.0,
-    1.0, -1.0,
-    1.0, -1.0,
-  ];
-
   // Now pass the list of positions into WebGL to build the
   // shape. We do this by creating a Float32Array from the
   // JavaScript array, then use it to fill the current buffer.

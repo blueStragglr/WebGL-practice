@@ -3,7 +3,7 @@
     [
       "babel-plugin-react-scoped-css",
       {
-        "include": ".scoped.(sa|sc|c)ss$"
+        "include": ".scoped.scss"
       }
     ]
   ]

@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react'
-import './Triangle.scoped.scss'
-import { renderTriangle } from '../../utils/WebGLInitializer'
+import React, { useEffect } from 'react';
+import './Square.scss'
+import {renderTriangle} from '../../utils/WebGLInitializer'
 import { ObjectList } from '../../models/ObjectList'
 
-const TriangleWebGL = () => {
-  const objectId: ObjectList = 'triangle'
+const SquareWebGL = () => {
+  const objectId: ObjectList = 'square'
 
   const positions: number[] = [
-    1.0, 2.0,
-    -1.0, 1.0,
+    2.0,  2.0,
+    -2.0,  2.0,
     2.0, -2.0,
-    1.0, -1.0
-  ]
+    -2.0, -2.0,
+  ];
 
   useEffect(() => {
     renderTriangle(objectId, positions)
@@ -24,5 +24,5 @@ const TriangleWebGL = () => {
   )
 }
 
-export default TriangleWebGL
+export default SquareWebGL
 
